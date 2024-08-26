@@ -1,0 +1,12 @@
+.env
+.vscode
+__pycache__
+.ipynb_*
+agent.cast
+agent.gif
+.cache
+.DS_Store
+__kubecache__
+__chromadb__
+tmp
+coding
