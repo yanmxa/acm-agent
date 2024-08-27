@@ -17,5 +17,5 @@ def kubectl_executor() -> autogen.UserProxyAgent:
             )
         },
         # max_consecutive_auto_reply=12,  # terminate without auto-reply
-        human_input_mode="NEVER",
+        human_input_mode="ALWAYS",
     )

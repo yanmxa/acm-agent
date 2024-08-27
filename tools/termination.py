@@ -5,4 +5,4 @@ def termination_message(msg):
     :param msg: Message dictionary to check.
     :return: Boolean indicating if termination condition is met.
     """
-    return msg.get("content") is not None and "TERMINATE" in msg["content"]
+    return msg.get("content") is not None and ("TERMINATE" in msg["content"]) 

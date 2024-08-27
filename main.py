@@ -15,7 +15,7 @@ llm_config = {
             "model": "llama-3.1-70b-versatile",
             "base_url": "https://api.groq.com/openai/v1",
             "api_key": os.getenv("GROQ_API_KEY"),
-            "temperature": 0.2,
+            "temperature": 0.1,
             "price": [0, 0],
         }
     ]
