@@ -16,6 +16,6 @@ def kubectl_executor() -> autogen.UserProxyAgent:
                 work_dir=os.path.join(current_working_directory, "__kubecache__"),
             )
         },
-        max_consecutive_auto_reply=12,  # terminate without auto-reply
-        human_input_mode="ALWAYS",
+        # max_consecutive_auto_reply=12,  # terminate without auto-reply
+        human_input_mode="NEVER",
     )

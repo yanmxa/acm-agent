@@ -1,16 +1,17 @@
 import autogen
 
+from tools import *
+
 def kube_engineer(llm_config: dict):
     engineer = autogen.AssistantAgent(
-        name="Kubernetes Engineer",
-        is_termination_msg=lambda x: x.get("content", "")
-        and x.get("content", "").rstrip().endswith("TERMINATE"),
+        name="Engineer",
+        is_termination_msg=termination_message,
         human_input_mode="ALWAYS",
         llm_config=llm_config.copy(),
         description="Analyze the User's plan or intent to write a sequence of shell command/scripts.",
         system_message="""You are a Kubernetes Engineer.
 
-Your task is to analyze the user's intent to perform actions on resources and convert this intent into a series of shell commands/scripts. For any action beyond writing code or reasoning, convert it to a step that can be implemented by writing code/scripts. After each step(scripts/code) is completed by others, monitor progress and guide the remaining steps. If a step fails, attempt a workaround.
+Your task is to analyze the user's intent to perform actions on resources and convert this intent into a series of shell scripts. For any action beyond writing code or reasoning, convert it to a step that can be implemented by writing code/scripts. After each step(scripts/code) is completed by others, monitor progress and guide the remaining steps. If a step fails, attempt a workaround(like use other command, alternative ways and so on).
 
 Examples:
 
@@ -103,7 +104,7 @@ Example 2: Find the Resource Usage of `global-hub-manager`
 
 Please remember: 
 - Try to using simple English and avoid using some wired characters
-- Try to complete the task in as few steps as possibly(like combining shell commands into a script)
+- Try to complete the task in as few steps as possibly(like combining shell commands into a script or use less shell commands)
 - Try to break down each step with a code block, you can only give one step each time
 - Use the KUBECONFIG environment to access the current cluster
 
