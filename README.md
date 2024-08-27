@@ -27,9 +27,9 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
 
   <div style="display: flex; gap: 5px;">
 
-  <a href="https://asciinema.org/a/673721" target="_blank"><img src="https://asciinema.org/a/673721.svg" /></a>
+  <a href="https://asciinema.org/a/673721" target="_blank"><img src="https://asciinema.org/a/673721.svg" style="width: 200px; height: auto;" /></a>
   
-  <a href="https://asciinema.org/a/673715" target="_blank"><img src="https://asciinema.org/a/673715.svg" /></a>
+  <a href="https://asciinema.org/a/673715" target="_blank"><img src="https://asciinema.org/a/673715.svg" style="width: 200px; height: auto;" /></a>
   </div>
 
 - Multi-Agents for Open Cluster Management
