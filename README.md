@@ -1,4 +1,4 @@
-# ocm-agents
+# Multi-Agents for Open Cluster Management
 
 ## Install a Local OCM
 
