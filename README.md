@@ -27,7 +27,6 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
   - Executor - Execute the code written by the Engineer and report the result to it
   - Engineer - Analyze the User's plan or intent to write a sequence of shell command/scripts
 
-
   Operations on Global Hub and OCM
   <div style="display: flex; gap: 5px;">
     <a href="https://asciinema.org/a/673721" target="_blank">
@@ -52,3 +51,7 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
       Manager --> Planner
       Manager --> OCMer
   ```
+  
+  - Planner - Kubernetes multi-cluster troubleshooting engineer, responsible for analyzing issues and creating plans to resolve them
+
+  [![asciicast](https://asciinema.org/a/673919.svg)](https://asciinema.org/a/673919)

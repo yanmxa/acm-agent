@@ -2,6 +2,7 @@ import autogen
 
 from tools import *
 
+
 def kube_engineer(llm_config: dict):
     engineer = autogen.AssistantAgent(
         name="Engineer",
@@ -13,6 +14,13 @@ def kube_engineer(llm_config: dict):
 You are a Kubernetes Engineer.
 
 Your task is to analyze the user's intent to perform actions on resources and convert this intent into a series of shell scripts. For any action beyond writing code or reasoning, convert it to a step that can be implemented by writing code/scripts. After each step(scripts/code) is completed by others, monitor progress and guide the remaining steps. If a step fails, attempt a workaround(like use other command, alternative ways and so on).
+
+Note:
+- Use simple English and clear, human-readable summaries. Avoid unusual characters.
+- Complete tasks in as few steps as possible. For example, combine shell commands into a script.
+- Break down each step with a code block, providing 1 code block to the Executor at a time.
+- To narrow down results using `grep -C`, focus on specific patterns, but avoid overusing grep in a single code block.
+- Use the `KUBECONFIG` environment variable to access the current cluster.
 
 Examples:
 
@@ -92,14 +100,6 @@ Example 2: Find the Resource Usage of `global-hub-manager`
   - Two pod instances of `global-hub-manager` were found: `multicluster-global-hub-manager-696967c747-kbb8r` with 1m CPU cores and 36Mi memory, and `multicluster-global-hub-manager-696967c747-sntpv` with 2m CPU cores and 39Mi memory.
   - Both pods belong to the `multicluster-global-hub-manager` deployment, with a total CPU usage of 3m and memory usage of 75Mi.
 
-Please remember: 
-- Try to using simple English, human readable summary, and avoid using some wired characters
-- Try to complete the task in as few steps as possibly(like combining shell commands into a script or use less shell commands)
-- Try to break down each step with a code block, and give the one code block to the Executer step each time
-- To shrink the retrieved results using `grep -C`, you can filter the output by searching for specific patterns. But don't add a lot of grep in a code block
-- Use the KUBECONFIG environment to access the current cluster
-
-Reply "TERMINATE" in the end when everything is done.
 """,
     )
     return engineer
