@@ -8,7 +8,7 @@ current_working_directory = os.path.dirname(os.path.realpath(__file__))
 def kubectl_executor() -> autogen.UserProxyAgent:
     return autogen.UserProxyAgent(
         "Executor",
-        description="Execute the code written by the 'Kubernetes Engineer' and report the result to it. Invoke me only when you have code block to run",
+        description="Execute the code written by the 'Kubernetes Engineer' and report the result to it",
         llm_config=False,
         code_execution_config={
             "executor": LocalCommandLineCodeExecutor(
