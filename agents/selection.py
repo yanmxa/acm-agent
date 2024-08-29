@@ -51,3 +51,31 @@ def planner_selection(
         return "auto"
 
     return custom_speaker_selection_func
+
+
+def ocm_selection(
+    ocmer: autogen.Agent,
+    planner: autogen.Agent,
+    engineer: autogen.Agent,
+    executor: autogen.Agent,
+    user: autogen.Agent,
+):
+    def custom_speaker_selection_func(last_speaker, groupchat):
+        content = groupchat.messages[-1]["content"]
+
+        if last_speaker == planner:
+            if "TERMINATE" in content:
+                return user
+            elif "OCMer" in content:
+                return ocmer
+            else:
+                return engineer
+        elif last_speaker == engineer:
+            return executor if "```" in content else planner
+        elif last_speaker == executor:
+            return engineer
+        elif last_speaker == user:
+            return planner
+        return "auto"
+
+    return custom_speaker_selection_func
