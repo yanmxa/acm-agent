@@ -68,7 +68,7 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
   </a>
 </div>
 
-#### Scenario 1: Unknown status for cluster1 - bootstrap hub kubeconfig is degraded
+#### Scenario 1: cluster1 status unknown - bootstrap hub kubeconfig is degraded
 
 - Make the bootstrap hub kubeconfig invalid
 
@@ -94,7 +94,7 @@ python main.py "why the status of cluster1 is unknown?"
 
 [![asciicast](https://asciinema.org/a/674162.svg)](https://asciinema.org/a/674162)
 
-#### Scenario 2: Unknown status for cluster2 - disable the klusterlet agent and registration agent
+#### Scenario 2: cluster2 status unknown - disable the klusterlet agent and registration agent
 
 - Scale these 2 agents to 0
 
