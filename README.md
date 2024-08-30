@@ -73,7 +73,7 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
 - Make the bootstrap hub kubeconfig invalid
 
 ```bash
-kubectl edit secret bootstrap-hub-kubeconfig -n open-cluster-management-agent --context kind-cluster1
+# kubectl edit secret bootstrap-hub-kubeconfig -n open-cluster-management-agent --context kind-cluster1
 # kubectl edit secret hub-kubeconfig-secret  -n open-cluster-management-agent --context kind-cluster1
 
 kubectl delete secret bootstrap-hub-kubeconfig -n open-cluster-management-agent --context kind-cluster1
@@ -113,3 +113,5 @@ kubectl get mcl cluster2 --context kind-hub
 ```shell
 python main.py "why the status of cluster2 is unknown"
 ```
+
+[![asciicast](https://asciinema.org/a/674155.svg)](https://asciinema.org/a/674155)

@@ -15,11 +15,15 @@ llm_config = {
             "model": "llama-3.1-70b-versatile",
             "base_url": "https://api.groq.com/openai/v1",
             "api_key": os.getenv("GROQ_API_KEY"),
-            "temperature": 0.1,
+            "temperature": 0.0,
             "price": [0, 0],
         }
     ]
 }
+
+# llm_config = {
+#     "config_list": [{"model": "gpt-4o", "api_key": os.environ.get("OPENAI_API_KEY")}]
+# }
 
 
 def main(prompt):
@@ -67,7 +71,7 @@ def main(prompt):
     # Planner + Engineer + OCMer
     group_chat = autogen.GroupChat(
         agents=[user, engineer, planner, executor, ocmer],
-        max_round=20,
+        max_round=50,
         messages=[],
         speaker_selection_method=ocm_selection(
             ocmer, planner, engineer, executor, user

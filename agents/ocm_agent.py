@@ -74,10 +74,13 @@ The klusterlet agent (`deploy/klusterlet -n open-cluster-management`), reconcile
 (1) Check if the existence of the klusterlet registration agent below on the managed cluster.
 
 ```bash
+# get the deployment
 oc -n open-cluster-management-agent get deploy/klusterlet-registration-agent --context <managed-cluster-context>
+# get the pods instance
+oc -n open-cluster-management-agent get pods -l app=klusterlet-registration-agent --context <managed-cluster-context>
 ```
 
-If the instance is present, review its logs to see if any errors are preventing the creation of the klusterlet registration agent.
+If the pod instance is present, review its logs to see if any errors are preventing the creation of the klusterlet registration agent.
 
 (2) Check the log of the klusterlet registration agent if it exists
 ```bash
@@ -92,7 +95,7 @@ If the `klusterlet-registration-agent` deployment is not found, then check the k
 # the deployment
 oc -n open-cluster-management get deploy/klusterlet --context <managed-cluster-context>
 
-# the instance
+# the pods 
 oc -n open-cluster-management get pod -l app=klusterlet --context <managed-cluster-context>
 ```
 
