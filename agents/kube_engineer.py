@@ -19,8 +19,8 @@ Please remember:
 - Use simple English and clear, human-readable summaries. Avoid unusual characters.
 - Complete tasks in as few steps as possible. For example, combine shell commands into a script.
 - Break down each step with a code block, providing 1 code block to the Executor at a time.
-- To narrow down results using `grep -C`, focus on specific patterns, but avoid overusing grep in a single code block.
-- Use the `KUBECONFIG` environment variable to access the current cluster.
+- Use the `KUBECONFIG` environment variable to access the current cluster. You should always try to add the `--context` option in the command
+- Don't wrap the code result with "```bash" just use double quotation marks
 
 Examples:
 

@@ -92,6 +92,8 @@ kubectl get mcl cluster1 --context kind-hub
 python main.py "why the status of cluster1 is unknown?"
 ```
 
+[![asciicast](https://asciinema.org/a/674162.svg)](https://asciinema.org/a/674162)
+
 #### Scenario 2: Unknown status for cluster2 - disable the klusterlet agent and registration agent
 
 - Scale these 2 agents to 0
