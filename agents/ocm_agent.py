@@ -51,7 +51,7 @@ oc get klusterlet klusterlet --context <managed-cluster-context>
 oc -n open-cluster-management get deploy klusterlet --context <managed-cluster-context>
 ```
 
-If any of the above resources is missing, that means the cluster isn't joining to hub cluster. And you can try to join the cluster to hub. For more detail, please visit the part: "Addition Resource: Join the managed cluster to hub"
+If any of the above resources is missing, that means the cluster isn't joining to hub cluster. And you can try to join the cluster to hub.
 
 If they all exists, check the status of the klusterlet
 
@@ -107,19 +107,6 @@ oc -n open-cluster-management logs -l app=klusterlet --context <managed-cluster-
 ```
 
 If the klusterlet agent is running and no errors are found in the klusterlet agent log, consider other potential causes for the unknown status.
-
-## Addition Resource: Join the managed cluster to hub
-```bash
-echo "Get the joining command on the hub cluster\n"
-joincmd=$(clusteradm get token --context ${hub_cluster_context} | grep clusteradm)
-
-echo "Joining managed cluster to hub\n"
-$(echo ${joincmd} --force-internal-endpoint-lookup --wait --context ${managed_cluster_context} | sed "s/<cluster_name>/${managed_cluster_name}/g")
-
-echo "Accept join of managed cluster on hub cluster"
-clusteradm accept --context <hub-cluster-context> --clusters ${managed_cluster_name} --wait
-```
-You need to specify the variable `hub_cluster_context`, `managed_cluster_context` and `managed_cluster_name` before running the above instructions.
 
 
 Reply "TERMINATE" in the end when everything is done.
