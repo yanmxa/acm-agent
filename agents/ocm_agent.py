@@ -63,7 +63,7 @@ oc get klusterlet klusterlet --context <managed-cluster-context>  -oyaml
 
 The status maybe contain the information why the klusterlet registration agent (`deploy/klusterlet-registration-agent -n open-cluster-management-agent`) cann't update the cluster lease in the hub. 
 
-A typical error is that the `hub-kubeconfig-secret` used to connect the hub cluster is invalid!
+A common issue is an invalid `hub-kubeconfig-secret` used to connect to the hub cluster. However, it's essential to first identify the root cause when the Klusterlet registration and Klusterlet agent are not functioning as expected.
 
 If there are no obvious error in the klusterlet status, consider other potential causes for the unknown status.
 
