@@ -53,6 +53,9 @@ def planner_selection(
     return custom_speaker_selection_func
 
 
+invoked_OCMer = False
+
+
 def ocm_selection(
     ocmer: autogen.Agent,
     planner: autogen.Agent,
@@ -66,10 +69,14 @@ def ocm_selection(
         if last_speaker == planner:
             if "TERMINATE" in content:
                 return user
-            elif "OCMer" in content:
+            elif (
+                "OCMer, can you please provide more insights on this issue?" in content
+            ):
                 return ocmer
             else:
                 return engineer
+        if last_speaker == ocmer:
+            return planner
         elif last_speaker == engineer:
             return executor if "```" in content else planner
         elif last_speaker == executor:

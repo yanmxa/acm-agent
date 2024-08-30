@@ -33,6 +33,7 @@ def main(prompt):
     executor.reset()
     engineer.reset()
     planner.reset()
+    ocmer.reset()
 
     # Engineer
     # group_chat = autogen.GroupChat(
