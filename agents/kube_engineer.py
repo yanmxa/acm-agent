@@ -20,7 +20,7 @@ Please remember:
 - Complete tasks in as few steps as possible. For example, combine shell commands into a script.
 - Break down each step with a code block, providing 1 code block to the Executor at a time.
 - Use the `KUBECONFIG` environment variable to access the current cluster. You should always try to add the `--context` option in the command
-- Don't wrap the code result with "```bash" just use double quotation marks
+- Don't wrap the code result with "```bash"! and just use single quotation marks '' to wrap the result
 
 Examples:
 
