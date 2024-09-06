@@ -24,9 +24,9 @@ This is a multi-agent system for troubleshooting Kubernetes applications. Its in
 
 - User: The user who ask questions and give tasks
 
-- Executor: Execute the code written by the Engineer and report the result to it
+- Executor: Execute the code written by the 'Engineer' and report the results back to them
   
-- Engineer: Analyze the User's plan or intent to write a sequence of shell command/scripts
+- Engineer: Analyze the intent of the user or planner to write a sequence of shell commands or scripts
 
 #### Operations on Global Hub and OCM
 

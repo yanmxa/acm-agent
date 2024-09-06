@@ -9,7 +9,7 @@ def kube_engineer(llm_config: dict):
         is_termination_msg=termination_message,
         human_input_mode="ALWAYS",
         llm_config=llm_config.copy(),
-        description="Analyze the intent to write a sequence of shell command/scripts.",
+        description="Analyze the intent of the user or planner to write a sequence of shell commands or scripts",
         system_message="""
 You are a Kubernetes Engineer.
 
