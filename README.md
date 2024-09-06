@@ -1,15 +1,16 @@
-# Multi-Agents for Open Cluster Management
+# Multi-Agents for Open/Advanced Cluster Management
 
-## Install a Local OCM
+This is a multi-agent system for troubleshooting/analyzing applications. Its initial implementation focuses on diagnosing the Open (Advanced) Cluster Management environment, but it can be customized for other products as well.
 
-```bash
-# install clusteradm
-curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
-# create OCM
-curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/solutions/setup-dev-environment/local-up.sh | bash
-```
+## Open Cluster Management
 
-## Multi-Agents for the Open Cluster Management
+[Open Cluster Management](https://open-cluster-management.io/) is a community-driven project focused on multicluster and multicloud scenarios for Kubernetes apps. Open APIs are evolving within this project for cluster registration, work distribution, dynamic placement of policies and workloads, and much more.
+
+- [Installation](https://open-cluster-management.io/getting-started/quick-start/)
+
+## Multi-Agents for Open Cluster Management
+
+
 
 ### Interact with the kubernetes environment
 
