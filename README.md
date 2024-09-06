@@ -1,6 +1,6 @@
-# Multi-Agents for Open/Advanced Cluster Management
+# OCM/ACM Agents
 
-This is a multi-agent system for troubleshooting/analyzing applications. Its initial implementation focuses on diagnosing the Open (Advanced) Cluster Management environment, but it can be customized for other products as well.
+This is a multi-agent system for troubleshooting Kubernetes applications. Its initial implementation focuses on diagnosing the Open (or Advanced) Cluster Management environment, but it can be customized for other products as well.
 
 ## Open Cluster Management
 
@@ -8,9 +8,7 @@ This is a multi-agent system for troubleshooting/analyzing applications. Its ini
 
 - [Installation](https://open-cluster-management.io/getting-started/quick-start/)
 
-## Multi-Agents for Open Cluster Management
-
-
+## Multi-Agents
 
 ### Interact with the kubernetes environment
 
