@@ -40,7 +40,7 @@ This is a multi-agent system for troubleshooting Kubernetes applications. Its in
   </a>
 </div>
 
-### Add Knowledge of OCM
+### Add Knowledge Advisor for OCM
 
   ```mermaid
   ---
@@ -51,12 +51,12 @@ This is a multi-agent system for troubleshooting Kubernetes applications. Its in
       Manager --> Engineer
       Manager --> Executor
       Manager --> Planner
-      Manager --> OCMer
+      Manager --> Advisor
   ```
 
-- Planner - Kubernetes multi-cluster troubleshooting engineer, responsible for analyzing issues and creating plans to resolve them
+- Planner - Kubernetes planner, responsible for making a detailed plan to accomplish a specific task within a Kubernetes environment
 
-- OCMer - The knowledge repository of OCM(Open Cluster Management) is a valuable resource where you can find solutions and ideas for addressing any multi-cluster issue
+- Advisor - The knowledge repository where you can find solutions and ideas for addressing any multi-cluster issues
 
 #### Check the status of OCM
 

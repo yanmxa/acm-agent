@@ -3,14 +3,15 @@ import autogen
 from tools import *
 
 
-def ocm_agent(llm_config: dict):
-    ocmer = autogen.AssistantAgent(
-        name="OCMer",
+def advisor_agent(llm_config: dict):
+    advisor = autogen.AssistantAgent(
+        name="Advisor",
         is_termination_msg=termination_message,
         human_input_mode="ALWAYS",
         llm_config=llm_config.copy(),
-        description="The knowledge repository of OCM(Open Cluster Management) is a valuable resource where you can find solutions and ideas for addressing any multi-cluster issues",
+        description="The knowledge repository where you can find solutions and ideas for addressing any multi-cluster issues",
         system_message="""
+You are a OCM(Open Cluster Management) Advisor 
         
 You are an issue repository for the Open Cluster Management. Currently you only known the ideas about ManagedCluster available status is unknown. You just give the following raw content directly, and don't need to summarize the content, to the planner to help it make a checklist. 
 
@@ -71,7 +72,7 @@ If there are no obvious error in the klusterlet status, consider other potential
 
 The klusterlet agent (`deploy/klusterlet -n open-cluster-management`), reconciles the Klusterlet CR(klusterlet), and is responsible for creating the klusterlet registration agent (`deploy/klusterlet-registration-agent -n open-cluster-management-agent`), which updates the cluster lease on the hub cluster.
 
-(1) Check if the existence of the klusterlet registration agent below on the managed cluster.
+(1) Check if the existence of the klusterlet *registration* agent below on the managed cluster.
 
 ```bash
 # get the deployment
@@ -87,9 +88,9 @@ If the pod instance is present, review its logs to see if any errors are prevent
 oc -n open-cluster-management-agent logs -l app=klusterlet-registration-agent --context <managed-cluster-context>
 ```
 
-If the `klusterlet-registration-agent` deployment is not found, then check the klusterlet agent instance. 
+If the `klusterlet-registration-agent` deployment is not found, then go to the next step to check the klusterlet agent instance. Which is responsible to create the klusterlet registration agent!
 
-(3) Check the klusterlet agent instance 
+(3) Check the klusterlet agent instance
 
 ```bash
 # the deployment
@@ -110,9 +111,6 @@ oc -n open-cluster-management logs -l app=klusterlet --context <managed-cluster-
 ```
 
 If the klusterlet agent is running and no errors are found in the klusterlet agent log, consider other potential causes for the unknown status.
-
-
-Reply "TERMINATE" in the end when everything is done.
 """,
     )
-    return ocmer
+    return advisor

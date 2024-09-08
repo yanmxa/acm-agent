@@ -32,32 +32,35 @@ def engineer_selection(
 
 
 def planner_selection(
-    planner: autogen.Agent,
-    engineer: autogen.Agent,
-    executor: autogen.Agent,
     user: autogen.Agent,
+    planner: autogen.Agent,
+    advisor: autogen.Agent,
 ):
     def custom_speaker_selection_func(last_speaker, groupchat):
         content = groupchat.messages[-1]["content"]
 
         if last_speaker == planner:
-            return user if "TERMINATE" in content else engineer
-        elif last_speaker == engineer:
-            return executor if "```" in content else planner
-        elif last_speaker == executor:
-            return engineer
+            if "TERMINATE" in content:
+                return user
+            elif (
+                "Advisor, can you please provide more insights on this issue?"
+                in content
+            ):
+                return advisor
+            else:
+                return user
+        elif last_speaker == advisor:
+            return planner
         elif last_speaker == user:
             return planner
-        return "auto"
+        else:
+            return "auto"
 
     return custom_speaker_selection_func
 
 
-invoked_OCMer = False
-
-
 def ocm_selection(
-    ocmer: autogen.Agent,
+    advisor: autogen.Agent,
     planner: autogen.Agent,
     engineer: autogen.Agent,
     executor: autogen.Agent,
@@ -70,12 +73,13 @@ def ocm_selection(
             if "TERMINATE" in content:
                 return user
             elif (
-                "OCMer, can you please provide more insights on this issue?" in content
+                "Advisor, can you please provide more insights on this issue?"
+                in content
             ):
-                return ocmer
+                return advisor
             else:
                 return engineer
-        if last_speaker == ocmer:
+        if last_speaker == advisor:
             return planner
         elif last_speaker == engineer:
             return executor if "```" in content else planner
@@ -83,6 +87,7 @@ def ocm_selection(
             return engineer
         elif last_speaker == user:
             return planner
-        return "auto"
+        else:
+            return "auto"
 
     return custom_speaker_selection_func
