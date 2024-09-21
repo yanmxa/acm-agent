@@ -1,10 +1,18 @@
 import autogen
+import os
 
 from tools import *
-from prompt import *
+
+current_dir = os.path.dirname(os.path.realpath(__file__))
 
 
 def kube_planner(llm_config: dict):
+    prompt_dir = os.path.join(current_dir, "..", "prompts")
+    with open(os.path.join(prompt_dir, "basic_knowledge.txt"), "r") as f:
+        basic_knowledge = f.read()
+    with open(os.path.join(prompt_dir, "cluster_access.txt"), "r") as f:
+        cluster_access = f.read()
+
     planner = autogen.AssistantAgent(
         name="Planner",
         is_termination_msg=termination_message,
@@ -26,17 +34,14 @@ Based on the information provided by the Advisor, develop a plan consisting of s
 - If resolved, report the outcome and mark the step as complete.
 - If unresolved, review progress, update the checklist if necessary, and move on to the next step.
 
-**Access Clusters:**
+{basic_knowledge}
 
-{OCM_KIND_CLUSTER_ACCESS}
+Note: This above knowledge will help you understand the background when drafting the plan.
+
+{cluster_access}
 
 Note: Use the method outlined above to specify cluster access in the plan.
 
-**Knowledge of the Multi-cluster(Open Cluster Management)**
-
-{OCM_BASIC_KNOWLEDGE}
-
-Note: This knowledge will help you understand the background when drafting the plan.
 
 Reply "TERMINATE" in the end when everything is done.
 """,

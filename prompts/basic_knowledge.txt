@@ -1,16 +1,5 @@
-OCM_KIND_CLUSTER_ACCESS = """
-You can interact with all clusters (hub and managed) using the `KUBECONFIG` environment variable by switching contexts to access different clusters.
+**Knowledge of the Multi-cluster(Open Cluster Management)**
 
-Each of these clusters is created using KinD. To access the hub cluster, use the `kind-hub` context.
-
-For managed clusters, switch to the corresponding context in the format `kind-<ManagedCluster>`. For example, to retrieve all pods on `cluster1`, use the following command:
-
-```bash
-kubectl get pods -A --context kind-cluster1
-```
-"""
-
-OCM_BASIC_KNOWLEDGE = """
 1. The cluster that manages other clusters is referred to as the hub cluster. It includes the following customized resources and controllers:
 
   - `ClusterManager` (Global Resource): This resource configures the hub and is reconciled by the `cluster-manager` controller in the `open-cluster-management` namespace by default. The `cluster-manager` watches the `ClusterManager` resource and installs other components in the `open-cluster-management-hub` namespace, including the `addon-manager`, `placement`, `registration`, and `work` controllers.
@@ -30,4 +19,3 @@ OCM_BASIC_KNOWLEDGE = """
   - `klusterlet-registration-agent`: Located in the managed cluster, this agent creates the `CSR` in the hub cluster and monitors/updates the heartbeat(lease) of the `ManagedCluster` in the hub cluster.
   
   - `klusterlet-work-agent`: Also located in the managed cluster, this agent monitors the `ManifestWork` of its namespace in the hub cluster and applies it to the local cluster (the managed cluster). It also updates the `ManifestWork` status in the hub cluster.
-"""
