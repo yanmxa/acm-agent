@@ -32,10 +32,10 @@ def engineer(prompt):
 
 
 # Planner + Advisor
-def planner(prompt):
+def advisor(prompt):
     user = user_proxy()
     planner = kube_planner(llm_config)
-    advisor = advisor_agent(llm_config)
+    advisor = advisor_agent()
 
     user.reset()
     planner.reset()
@@ -54,13 +54,13 @@ def planner(prompt):
     )
 
 
-# Planner + Advisor + Engineer + Executor
-def ocm(prompt):
+# Planner + Advisor + Engineer
+def PAE(prompt):
     user = user_proxy()
     executor = kubectl_executor()
     engineer = kube_engineer(llm_config)
     planner = kube_planner(llm_config)
-    advisor = advisor_agent(llm_config)
+    advisor = advisor_agent()
 
     user.reset()
     executor.reset()
@@ -89,6 +89,6 @@ def ocm(prompt):
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        planner(sys.argv[1])
+        advisor(sys.argv[1])
     else:
         print("No parameters were provided.")
