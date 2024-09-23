@@ -107,12 +107,15 @@ class AdvisorAgent(ConversableAgent):
 
     def _search(self, message):
         results = self.embeddings.search(message, 2)
+        target = ""
         for item in results:
             file = self.documents[item[0]][2]
             print(f"Knowledge found with a score of: {item}\nFile: {file} \n")
-            raw_content = ""
-            with open(file, "r") as f:
-                raw_content = f.read()
+            if not target:
+                target = file
+        raw_content = ""
+        with open(target, "r") as f:
+            raw_content = f.read()
         return raw_content
 
 
