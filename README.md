@@ -34,15 +34,15 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
 
 #### Demos
 
-  - Check the status of `managedclusters`
-  
-  - Retrieve the resource usage of `kafka` cluster
+- Check the status of `managedclusters`
 
-    <div style="display: flex; gap: 5px;">
-      <a href="https://asciinema.org/a/677362" target="_blank">
-        <img src="https://asciinema.org/a/677362.svg" style="width: 80%; height: auto;" />
-      </a>
-    </div>
+- Retrieve the resource usage of `kafka` cluster
+
+  <div style="display: flex; gap: 5px;">
+    <a href="https://asciinema.org/a/677362" target="_blank">
+      <img src="https://asciinema.org/a/677362.svg" style="width: 80%; height: auto;" />
+    </a>
+  </div>
 
 ### Task 2: Add Knowledge Advisor for ACM
 
@@ -58,18 +58,9 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
 
 - Manager - orchestrates the workflow between agents
 
-#### Demo
+#### Demo: The Status of Cluster Unknown
 
-<!-- [![asciicast](https://asciinema.org/a/673919.svg)](https://asciinema.org/a/673919) -->
-<div style="display: flex; gap: 5px;">
-  <a href="https://asciinema.org/a/673919" target="_blank">
-    <img src="https://asciinema.org/a/673919.svg" style="width: 90%; height: auto;" />
-  </a>
-</div>
-
-#### Scenario 1: cluster1 status unknown - bootstrap hub kubeconfig is degraded
-
-- Make the bootstrap hub kubeconfig invalid
+- Scenario 1: Cluster1 - Make the bootstrap hub kubeconfig invalid
 
 ```bash
 # kubectl edit secret bootstrap-hub-kubeconfig -n open-cluster-management-agent --context kind-cluster1
@@ -79,40 +70,28 @@ kubectl delete secret bootstrap-hub-kubeconfig -n open-cluster-management-agent 
 kubectl delete secret hub-kubeconfig-secret  -n open-cluster-management-agent --context kind-cluster1
 ```
 
-- Wait until the status is unknown
-
-```bash
-kubectl get mcl cluster1 --context kind-hub
-```
-
-- troubleshooting the unknown issue
-
 ```python
+kubectl get mcl cluster1 --context kind-hub
 python main.py "why the status of cluster1 is unknown?"
 ```
 
 [![asciicast](https://asciinema.org/a/674162.svg)](https://asciinema.org/a/674162)
 
-#### Scenario 2: cluster2 status unknown - disable the klusterlet agent and registration agent
 
-- Scale these 2 agents to 0
+- Scenario 2: Disable the `Klusterlet` agent and the `registration` agent
 
-```bash
-kubectl scale deployment klusterlet -n open-cluster-management --replicas=0 --context kind-cluster2
+  - Scale these 2 agents to 0
 
-kubectl scale deployment klusterlet-registration-agent -n open-cluster-management-agent --replicas=0 --context kind-cluster2
-```
+  ```bash
+  kubectl scale deployment klusterlet -n open-cluster-management --replicas=0 --context kind-cluster2
+  kubectl scale deployment klusterlet-registration-agent -n open-cluster-management-agent --replicas=0 --context kind-cluster2
+  ```
 
-- Wait until the status is unknown
+  - Troubleshooting the unknown issue
 
-```bash
-kubectl get mcl cluster2 --context kind-hub
-```
+  ```shell
+  kubectl get mcl cluster2 --context kind-hub
+  python main.py "why the status of cluster2 is unknown"
+  ```
 
-- Troubleshooting the unknown issue
-
-```shell
-python main.py "why the status of cluster2 is unknown"
-```
-
-[![asciicast](https://asciinema.org/a/674155.svg)](https://asciinema.org/a/674155)
+  [![asciicast](https://asciinema.org/a/674155.svg)](https://asciinema.org/a/674155)
