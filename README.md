@@ -19,7 +19,7 @@ Setup hub and managed cluster
 Run the following command to quickly setup a hub cluster and 2 managed clusters by kind.
 
 ```bash
-curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/solutions/s
+curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/solutions/setup-dev-environment/local-up.sh | bash
 ```
 
 ## Organize Agents
@@ -94,4 +94,4 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
   python main.py "why the status of cluster2 is unknown"
   ```
 
-  [![asciicast](https://asciinema.org/a/674155.svg)](https://asciinema.org/a/674155)
+  [![asciicast](https://asciinema.org/a/677394.svg)](https://asciinema.org/a/677394)

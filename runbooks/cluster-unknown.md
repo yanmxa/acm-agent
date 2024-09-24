@@ -32,12 +32,9 @@ The diagnostic instructions may follow two paths: klusterlet resources and contr
 ```bash
 # Klusterlet CR
 oc get klusterlet klusterlet --context <managed-cluster-context>
-
-# Klusterlet operator
-oc -n open-cluster-management get deploy klusterlet --context <managed-cluster-context>
 ```
 
-If any of the above resources is missing, that means the cluster isn't joining to hub cluster. And you can try to join the cluster to hub.
+If the above resources is missing, that means the cluster isn't joining to hub cluster. And you can try to join the cluster to hub.
 
 If they all exists, check the status of the klusterlet
 
@@ -66,9 +63,12 @@ oc -n open-cluster-management-agent get deploy/klusterlet-registration-agent --c
 oc -n open-cluster-management-agent get pods -l app=klusterlet-registration-agent --context <managed-cluster-context>
 ```
 
-If the pod instance is present, review its logs to see if any errors are preventing the creation of the klusterlet registration agent.
+The unknown status is caused by the Klusterlet registration agent not running, or there may be internal issues preventing it from updating the managed cluster on the hub. We need to explore further with the following two cases:
 
-(2) Check the log of the klusterlet registration agent if it exists
+If the pod instance is present, try to review its logs to see if any errors are preventing the creation of the klusterlet registration agent.
+If the pod instance is not present, go to (3) check the klusterlet agent which is responsible create the registration agent.
+
+(2) Check the log of the pod of the klusterlet registration agent if it exists
 
 ```bash
 oc -n open-cluster-management-agent logs -l app=klusterlet-registration-agent --context <managed-cluster-context>
@@ -86,11 +86,11 @@ oc -n open-cluster-management get deploy/klusterlet --context <managed-cluster-c
 oc -n open-cluster-management get pod -l app=klusterlet --context <managed-cluster-context>
 ```
 
-If the klusterlet agent pod isn't running, then you can check the deployment detail to summarize why it isn't running and return the reason caused unknown status. 
+If the Klusterlet agent pod isn't running, this is why the Klusterlet registration agent instance is not operational! Then get the deployment detail to investigate why the instance hasn't running and return the result.
 
-If the klusterlet agent pod is running, check the logs of the klusterlet agent
+If the klusterlet agent pod exists, check the logs of the klusterlet agent.
 
-(4) Check the klusterlet agent log on the managed cluster.
+(4) Check the klusterlet agent log on the managed cluster if the klusterlet agent pod exists.
 
 ```bash
 oc -n open-cluster-management logs -l app=klusterlet --context <managed-cluster-context>
