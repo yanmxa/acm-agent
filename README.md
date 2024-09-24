@@ -34,14 +34,15 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
 
 #### Demos
 
-  <div style="display: flex; gap: 5px;">
-    <a href="https://asciinema.org/a/673721" target="_blank">
-      <img src="https://asciinema.org/a/673721.svg" style="width: 48%; height: auto;" />
-    </a>
-    <a href="https://asciinema.org/a/673715" target="_blank">
-      <img src="https://asciinema.org/a/673715.svg" style="width: 48%; height: auto;" />
-    </a>
-  </div>
+  - Check the status of `managedclusters`
+  
+  - Retrieve the resource usage of `kafka` cluster
+
+    <div style="display: flex; gap: 5px;">
+      <a href="https://asciinema.org/a/677362" target="_blank">
+        <img src="https://asciinema.org/a/677362.svg" style="width: 80%; height: auto;" />
+      </a>
+    </div>
 
 ### Task 2: Add Knowledge Advisor for ACM
 
