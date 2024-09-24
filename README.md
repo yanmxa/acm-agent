@@ -1,64 +1,63 @@
-# OCM/ACM Agents
+# ACM Agents
 
 This is a multi-agent system for troubleshooting Kubernetes applications. Its initial implementation focuses on diagnosing the Open (or Advanced) Cluster Management environment, but it can be customized for other products as well.
 
-## Open Cluster Management
+## Environment
 
-[Open Cluster Management](https://open-cluster-management.io/) is a community-driven project focused on multicluster and multicloud scenarios for Kubernetes apps. Open APIs are evolving within this project for cluster registration, work distribution, dynamic placement of policies and workloads, and much more.
+We set up an Open Cluster Management environment to demonstrate how it works.
 
-- [Installation](https://open-cluster-management.io/getting-started/quick-start/)
+- [Installation](https://open-cluster-management.io/docs/getting-started/quick-start/)
 
-## Multi-Agents
+Install clusteradm CLI tool
+Run the following command to download and install the latest clusteradm command-line tool:
 
-### Interact with the kubernetes environment
+```bash
+curl -L https://raw.githubusercontent.com/open-cluster-management-io/clusteradm/main/install.sh | bash
+```
 
-  ```mermaid
-  ---
-  title: Kubernetes Engineer + Executor
-  ---
-  stateDiagram-v2
-      Manager --> User
-      Manager --> Engineer
-      Manager --> Executor
-  ```
+Setup hub and managed cluster
+Run the following command to quickly setup a hub cluster and 2 managed clusters by kind.
+
+```bash
+curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/solutions/s
+```
+
+## Organize Agents
+
+### Task 1: Interact with the Kubernetes Environment
+
+![agent1](./images/agent1.png)
 
 - User: The user who ask questions and give tasks
-
 - Executor: Execute the code written by the 'Engineer' and report the results back to them
-  
 - Engineer: Analyze the intent of the user or planner to write a sequence of shell commands or scripts
 
-#### Operations on Global Hub and OCM
+#### Demos
 
-<div style="display: flex; gap: 5px;">
-  <a href="https://asciinema.org/a/673721" target="_blank">
-    <img src="https://asciinema.org/a/673721.svg" style="width: 48%; height: auto;" />
-  </a>
-  
-  <a href="https://asciinema.org/a/673715" target="_blank">
-    <img src="https://asciinema.org/a/673715.svg" style="width: 48%; height: auto;" />
-  </a>
-</div>
+  <div style="display: flex; gap: 5px;">
+    <a href="https://asciinema.org/a/673721" target="_blank">
+      <img src="https://asciinema.org/a/673721.svg" style="width: 48%; height: auto;" />
+    </a>
+    <a href="https://asciinema.org/a/673715" target="_blank">
+      <img src="https://asciinema.org/a/673715.svg" style="width: 48%; height: auto;" />
+    </a>
+  </div>
 
-### Add Knowledge Advisor for OCM
+### Task 2: Add Knowledge Advisor for ACM
 
-  ```mermaid
-  ---
-  title: Multi-Agents for Open Cluster Management
-  ---
-  stateDiagram-v2
-      Manager --> User
-      Manager --> Engineer
-      Manager --> Executor
-      Manager --> Planner
-      Manager --> Advisor
-  ```
+![agent2](./images/agent2.png)
 
 - Planner - Kubernetes planner, responsible for making a detailed plan to accomplish a specific task within a Kubernetes environment
 
 - Advisor - The knowledge repository where you can find solutions and ideas for addressing any multi-cluster issues
 
-#### Check the status of OCM
+### Task3: Orchestrate all agents within the system
+
+![agent3](./images/agent3.png)
+
+- Manager - orchestrates the workflow between agents
+
+#### Demo
 
 <!-- [![asciicast](https://asciinema.org/a/673919.svg)](https://asciinema.org/a/673919) -->
 <div style="display: flex; gap: 5px;">

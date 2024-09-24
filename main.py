@@ -1,7 +1,9 @@
 import sys
-import autogen
+import argparse
 
+import autogen
 from agents import *
+
 from tools import *
 
 
@@ -87,8 +89,26 @@ def PAE(prompt):
     # print(group_chat_result.summary)
 
 
-if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        advisor(sys.argv[1])
+def perform_task(runner, message):
+    runners = {"engineer": engineer, "advisor": advisor, "all": PAE}
+    task = runners.get(runner)
+    if task:
+        task(message)
     else:
-        print("No parameters were provided.")
+        print(f"No valid runner '{runner}' was provided for task: {message}")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Run a task based on the runner type.")
+    parser.add_argument("message", type=str, help="The message to indicate the task.")
+    parser.add_argument(
+        "--runner",
+        type=str,
+        default="all",
+        choices=["engineer", "advisor", "all"],
+        help="Specify the type of runner engineer, advisor or 'all' to execute the task.",
+    )
+    args = parser.parse_args()
+    if not args.message:
+        print("No valid message!")
+    perform_task(args.runner, args.message)
