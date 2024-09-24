@@ -62,20 +62,20 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
 
 - Scenario 1: Cluster1 - Make the bootstrap hub kubeconfig invalid
 
-```bash
-# kubectl edit secret bootstrap-hub-kubeconfig -n open-cluster-management-agent --context kind-cluster1
-# kubectl edit secret hub-kubeconfig-secret  -n open-cluster-management-agent --context kind-cluster1
+  ```bash
+  # kubectl edit secret bootstrap-hub-kubeconfig -n open-cluster-management-agent --context kind-cluster1
+  # kubectl edit secret hub-kubeconfig-secret  -n open-cluster-management-agent --context kind-cluster1
 
-kubectl delete secret bootstrap-hub-kubeconfig -n open-cluster-management-agent --context kind-cluster1
-kubectl delete secret hub-kubeconfig-secret  -n open-cluster-management-agent --context kind-cluster1
-```
+  kubectl delete secret bootstrap-hub-kubeconfig -n open-cluster-management-agent --context kind-cluster1
+  kubectl delete secret hub-kubeconfig-secret  -n open-cluster-management-agent --context kind-cluster1
+  ```
 
-```python
-kubectl get mcl cluster1 --context kind-hub
-python main.py "why the status of cluster1 is unknown?"
-```
+  ```python
+  kubectl get mcl cluster1 --context kind-hub
+  python main.py "why the status of cluster1 is unknown?"
+  ```
 
-[![asciicast](https://asciinema.org/a/674162.svg)](https://asciinema.org/a/674162)
+  [![asciicast](https://asciinema.org/a/674162.svg)](https://asciinema.org/a/674162)
 
 
 - Scenario 2: Disable the `Klusterlet` agent and the `registration` agent
