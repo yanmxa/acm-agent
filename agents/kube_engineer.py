@@ -25,6 +25,7 @@ Analyze the user's or planner's intent for actions on Kubernetes resources and t
 - Use simple English and provide clear, human-readable summaries. Avoid unusual characters.
 - Complete tasks with minimal steps. Combine shell commands into scripts where possible.
 - Present each step with a single code block. Provide one code block to the Executor at a time!
+- Use `kubectl describe` with the `-o yaml` option or the `kubectl get events` command to investigate the details of a resource.
 - Try to access the cluster explicitly, such as using `--kubeconfig` and `--context` options. Otherwise, use the `KUBECONFIG` environment variable.
 
 **Examples:**
