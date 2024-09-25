@@ -59,14 +59,12 @@ The klusterlet agent (`deploy/klusterlet -n open-cluster-management`), reconcile
 ```bash
 # get the deployment
 oc -n open-cluster-management-agent get deploy/klusterlet-registration-agent --context <managed-cluster-context>
-# get the pods instance
-oc -n open-cluster-management-agent get pods -l app=klusterlet-registration-agent --context <managed-cluster-context>
 ```
 
-The unknown status is caused by the Klusterlet registration agent not running, or there may be internal issues preventing it from updating the managed cluster on the hub. We need to explore further with the following two cases:
+The unknown status is caused by the Klusterlet registration agent instance not running, or there may be internal issues preventing it from updating the managed cluster on the hub. We need to explore further with the following two cases:
 
-If the pod instance is present, try to review its logs to see if any errors are preventing the creation of the klusterlet registration agent.
-If the pod instance is not present, go to (3) check the klusterlet agent which is responsible create the registration agent.
+If the pod instance of the deployment is present, go to (2) try to check its logs to see if any errors are preventing the creation of the klusterlet registration agent.
+If the the pod instance of the deployment is not present, go to (3) check the klusterlet agent which is responsible create the registration agent.
 
 (2) Check the log of the pod of the klusterlet registration agent if it exists
 
@@ -81,14 +79,11 @@ If the `klusterlet-registration-agent` deployment is not found, then go to the n
 ```bash
 # the deployment
 oc -n open-cluster-management get deploy/klusterlet --context <managed-cluster-context>
-
-# the pods 
-oc -n open-cluster-management get pod -l app=klusterlet --context <managed-cluster-context>
 ```
 
-If the Klusterlet agent pod isn't running, this is why the Klusterlet registration agent instance is not operational! Then get the deployment detail to investigate why the instance hasn't running and return the result.
+If the Klusterlet agent instance isn't running, this is why the Klusterlet registration agent instance is not operational! Then get the deployment detail of the klusterlet agent to find why the instance hasn't running and return the result.
 
-If the klusterlet agent pod exists, check the logs of the klusterlet agent.
+If the klusterlet agent instance(pod) exists, check the logs of the klusterlet agent.
 
 (4) Check the klusterlet agent log on the managed cluster if the klusterlet agent pod exists.
 
