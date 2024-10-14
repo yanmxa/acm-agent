@@ -1,4 +1,4 @@
-# ACM Agents
+# ACM Agent
 
 This is a multi-agent system for troubleshooting Kubernetes applications. Its initial implementation focuses on diagnosing the Open (or Advanced) Cluster Management environment, but it can be customized for other products as well.
 
