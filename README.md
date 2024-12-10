@@ -32,18 +32,6 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
 - Executor: Execute the code written by the 'Engineer' and report the results back to them
 - Engineer: Analyze the intent of the user or planner to write a sequence of shell commands or scripts
 
-#### Demos
-
-- Check the status of `managedclusters`
-
-- Retrieve the resource usage of `kafka` cluster
-
-  <div style="display: flex; gap: 5px;">
-    <a href="https://asciinema.org/a/677362" target="_blank">
-      <img src="https://asciinema.org/a/677362.svg" style="width: 80%; height: auto;" />
-    </a>
-  </div>
-
 ### Task 2: Add Knowledge Advisor for ACM
 
 ![agent2](./images/agent2.png)
