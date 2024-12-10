@@ -58,40 +58,10 @@ curl -L https://raw.githubusercontent.com/open-cluster-management-io/OCM/main/so
 
 - Manager - orchestrates the workflow between agents
 
-#### Demo: The Status of Cluster Unknown
+#### Demo: Cluster Unknown
 
-- Scenario 1: Cluster1 - Make the bootstrap hub kubeconfig invalid
+[![Watch the demo](https://asciinema.org/a/687993.svg)](https://asciinema.org/a/687993)
 
-  ```bash
-  # kubectl edit secret bootstrap-hub-kubeconfig -n open-cluster-management-agent --context kind-cluster1
-  # kubectl edit secret hub-kubeconfig-secret  -n open-cluster-management-agent --context kind-cluster1
+#### Addons Aren't Created
 
-  kubectl delete secret bootstrap-hub-kubeconfig -n open-cluster-management-agent --context kind-cluster1
-  kubectl delete secret hub-kubeconfig-secret  -n open-cluster-management-agent --context kind-cluster1
-  ```
-
-  ```python
-  kubectl get mcl cluster1 --context kind-hub
-  python main.py "why the status of cluster1 is unknown?"
-  ```
-
-  [![asciicast](https://asciinema.org/a/674162.svg)](https://asciinema.org/a/674162)
-
-
-- Scenario 2: Disable the `Klusterlet` agent and the `registration` agent
-
-  - Scale these 2 agents to 0
-
-  ```bash
-  kubectl scale deployment klusterlet -n open-cluster-management --replicas=0 --context kind-cluster2
-  kubectl scale deployment klusterlet-registration-agent -n open-cluster-management-agent --replicas=0 --context kind-cluster2
-  ```
-
-  - Troubleshooting the unknown issue
-
-  ```shell
-  kubectl get mcl cluster2 --context kind-hub
-  python main.py "why the status of cluster2 is unknown"
-  ```
-
-  [![asciicast](https://asciinema.org/a/677394.svg)](https://asciinema.org/a/677394)
+[![Watch the demo](https://asciinema.org/a/689439.svg)](https://asciinema.org/a/689439)
